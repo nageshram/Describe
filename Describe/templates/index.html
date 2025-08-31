@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Describe</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='bootstrap.css')}}"
+    />
+    <script
+      src="{{ url_for('static',filename='jquery2.js')}}"
+      type="text/javascript "
+    ></script>
+
+    <style>
+      /*
+        .hero::before{
+            content: "";
+            
+            z-index: 2;
+            width:500px;
+            height:500px;
+            border-radius: 25px;
+            width:200px;
+            background: linear-gradient(45deg,rgb(246, 26, 85),rgb(248, 31, 172));
+            
+            background: -webkit-linear-gradient(120deg,rgb(244, 86, 29),rgb(225, 13, 52));
+        }*/
+      .section {
+        /*background: -webkit-linear-gradient(to top, #30cfd0 0%, #330867 100%);
+            */
+        background: radial-gradient(
+          circle at -8.9% 51.2%,
+          rgb(12, 107, 148) 0%,
+          rgb(10, 48, 115) 15.9%,
+          rgb(240, 167, 98) 15.9%,
+          rgb(31, 39, 88) 24.4%,
+          rgb(19, 30, 37) 24.5%,
+          rgb(62, 100, 123) 66%
+        );
+
+        height: 100vh;
+      }
+
+      .navbar-inner {
+        padding: 3px 5px;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .item1 {
+        width: 250px;
+        height: 100px;
+      }
+
+      .nav-link {
+        color: aliceblue;
+        font-size: 18px;
+        font-weight: 600;
+        transition: transform 0.5s ease-in;
+      }
+
+      .nav-link a {
+        color: white;
+      }
+
+      a {
+        text-decoration: none;
+        color: none;
+      }
+
+      .nav-link:hover {
+        transform: scale(1.2);
+        color: white;
+      }
+
+      .header {
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        left: 5px;
+      }
+
+      .upload {
+        border: 1px solid white;
+        background-color: rgba(255, 255, 255, 0.1);
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+      }
+
+      .vector {
+        background-color: rgba(230, 234, 238, 0.207);
+        border-radius: 28px 89px 10px 123px;
+        width: 450px;
+        height: 250px;
+      }
+
+      .vector img {
+        border-radius: 200px 90px 90px 89px;
+        transition: transform 1s ease-out;
+        margin: 25px;
+        width: 100%;
+        height: auto;
+      }
+
+      .vector > img:hover {
+        transform: scale(0.9);
+      }
+
+      #caption-1 {
+        margin-left: 100px;
+        font-size: 19px;
+        color: rgba(183, 219, 243, 0.945);
+      }
+
+      #caption-1::before {
+        animation: flow 3s;
+        -webkit-animation: flow 6s;
+        content: "";
+        animation-timing-function: ease-in;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        -webkit-animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.2s;
+        animation-fill-mode: forwards;
+        animation-delay: 0.2s;
+      }
+
+      @keyframes flow {
+        0% {
+          content: "Image Processing....";
+        }
+
+        50% {
+          content: "Caption Generating...";
+        }
+
+        96% {
+          content: "A large clock tower towering over a city";
+        }
+      }
+
+      .brand {
+        border: none;
+        /* box-shadow: 0px 20px 100px gray;*/
+      }
+
+      #about {
+        max-width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      .footer {
+        max-width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        padding: 100px;
+        background: -webkit-linear-gradient(
+          120deg,
+          rgb(1, 0, 0),
+          rgba(184, 183, 183, 0.944)
+        );
+      }
+
+      .about-inner {
+        height: 50vh;
+        padding: 100px;
+      }
+
+      .foo {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.68);
+        color: aliceblue;
+      }
+
+      .form-box .output-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0px 0px 10px 2px rgba(163, 156, 156, 0.402);
+      }
+
+      .sh {
+        text-shadow: 1px 1px rgb(12, 12, 12);
+      }
+
+      @media screen and (max-width: 700px) {
+        .vector {
+          margin: 0vh 20vw;
+          height: 20px;
+        }
+
+        .vector img {
+          max-width: 100%;
+          height: auto;
+
+          visibility: hidden;
+        }
+
+        .hero {
+          flex-wrap: wrap;
+          flex-shrink: initial;
+          flex-direction: column-reverse;
+        }
+
+        .about-inner {
+          width: 100%;
+        }
+
+        .caption-1 {
+          margin: 0px 0px;
+        }
+      }
+
+      .call {
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="section" id="header">
+      <div class="header rounded bg-none ml-2 mr-2">
+        <div
+          class="navbar-inner text-white d-flex flex-direction-row p-2"
+          style="justify-content: space-between"
+        >
+          <h1 class="brand">Describe</h1>
+          <ul class="nav un-styled">
+            <li class="nav-link"><a href="#header">Home</a></li>
+            <li class="nav-link"><a href="#about">About</a></li>
+            <li class="nav-link"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="hero rounded"
+        style="
+          display: flex;
+          max-width: 100%;
+          height: auto;
+          justify-content: space-around;
+        "
+      >
+        <div class="d-block" style="padding: 50px">
+          <h1 class="display-3 fs-15 fw-12 text-white sh">
+            Describe<br />
+            What you see
+          </h1>
+          <p class="display-6 fs-16 call sh" style="color: rgb(245, 238, 238)">
+            Explore our new<br />
+            auto Image Caption Generator <br />
+            for free upload your image to test
+          </p>
+          <a href="#upload">
+            <button class="btn btn-md upload btn-success btn-large">
+              Upload image
+            </button>
+          </a>
+        </div>
+        <div class="vector d-block">
+          <img src="{{ url_for('static', filename='show-img.jpg')}}" />
+          <p id="caption-1"></p>
+        </div>
+      </div>
+    </section>
+    <div class="container mt-5" id="upload">
+      <div class="row">
+        <div class="row-md-12">
+          <div class="card form-box">
+            <form
+              action=""
+              method="POST"
+              enctype="multipart/form-data"
+              class="text-center"
+            >
+              <div class="card-header">
+                <h2 class="text-center">Transform your Image into caption</h2>
+                <div class="warning text-center">
+                  <p
+                    id="message"
+                    class="text-center"
+                    style="color: rgb(243, 87, 87)"
+                  ></p>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <fieldset>
+                  <label for="file" class="text-center"
+                    >Select image file
+                  </label>
+                  <input
+                    type="file"
+                    name="file"
+                    id="file"
+                    class="form-control text-center mx-auto"
+                    style="max-width: 500px"
+                  />
+                  <sub class="text-center"
+                    >( only *jpg, png, jpeg files are allowed)</sub
+                  >
+                </fieldset>
+                <br />
+                <fieldset class="text-center">
+                  <input
+                    type="button"
+                    id="ok"
+                    value="Upload"
+                    class="btn btn-success text-center"
+                  />
+                  <input
+                    type="button"
+                    id="clear"
+                    value="Clear"
+                    class="btn btn-warning text-center"
+                  />
+                </fieldset>
+              </div>
+            </form>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="row-md-12">
+          <div class="output-box">
+            <div
+              class="img-box"
+              style="
+                display: flex;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+              "
+            >
+              <img id="image" style=" display: flex; width: 100%; height: auto;
+              max-height: 600px; max-width: 700px;" " />
+            </div>
+            <figcaption>
+              <p
+                id="caption"
+                class="display-6"
+                style="
+                  align-self: flex-end;
+                  align-items: center;
+                  justify-content: center;
+                "
+              ></p>
+            </figcaption>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="about" style="margin-top: 50px; margin-bottom: 50px">
+      <div
+        class="about-inner"
+        style="max-width: 900px; margin: auto; padding: 20px"
+      >
+        <div
+          class="card align-items-center"
+          style="background-color: rgba(255, 255, 255, 0.8)"
+        >
+          <div class="card-header">
+            <h2 class="display-3">About Us</h2>
+          </div>
+          <div class="card-body">
+            <p class="display-8">
+              We are the software development freshers at BMS Institute of
+              Technology, a vibrant and enthusiastic group passionate about
+              coding and innovation. With infectious energy and creativity, we
+              collaborate, experiment, and learn from industry experts. Driven
+              by curiosity and a desire to make an impact, we're shaping the
+              future of technology. Dedicated, team-oriented, and eager to
+              learn, we embody the spirit of innovation and excellence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="footer">
+      <footer class="row align-items-center">
+        <h4 class="display-5 pt-1 pb-2 text-white" style="text-align: center">
+          <b>Contact Us</b>
+        </h4>
+        <hr class="line" />
+        <div class="col-md-6 text-white">
+          <b>Contact Details </b><br />
+          <a class="display-9 text-white" href="mailto:nagesha2r@gmail.com"
+            >nagesha2r@gmail.com</a
+          ><br />
+          <a class="display-9 text-white" href="mailto:mohammedmoein@gmail.com"
+            >mohammedmoein@gmail.com</a
+          ><br />
+          Ph : 7483158421 <br />
+          7589864531
+        </div>
+        <div class="col-md-6 text-white">
+          <b>Address:</b>
+          <p class="display-9">
+            BMS Institute of Technology <br />Avalahalli,<br />Doddaballapur
+            main road <br />
+            Yelahanka, Banglore
+          </p>
+        </div>
+      </footer>
+    </section>
+    <div class="foo">
+      <p class="display-9 text-gray" style="text-align: center">
+        &copy; All rights reserved 2024
+      </p>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#image").on("change", function () {
+          $("#image").attr("src", "");
+          $("#caption").text("");
+          $("#message").text("");
+          $("#file").val("");
+        });
+        $("#clear").on("click", function () {
+          $("#image").attr("src", "");
+          $("#caption").text("");
+          $("#message").text("");
+        });
+        $("#ok").on("click", function () {
+          var formData = new FormData();
+          formData.append("file", $("#file").prop("files")[0]);
+
+          $.ajax({
+            url: "/upload",
+            type: "POST",
+            data: formData,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function (data) {
+              if (data[0] == 400) {
+                $("#message").html(data[1]);
+              } else {
+                $("#caption").text("");
+                $("#image").attr("src", "/images/" + data[0]);
+                $("#caption").append("Generated caption : " + data[1]);
+                console.log(data[1]);
+                $("#message").html("");
+              }
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
